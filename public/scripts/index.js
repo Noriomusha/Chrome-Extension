@@ -1,7 +1,10 @@
 let inputBtn = document.getElementById("inputBtn");
+let retrieveBtn = document.getElementById("retrieveBtn");
 const myLeads = [];
 const inputEl = document.getElementById("input-el");
 const ulEl = document.getElementById("ul-el");
+
+localStorage.setItem("myLeads", JSON.stringify(myLeads));
 
 
 inputBtn.addEventListener("click", function(){
@@ -9,6 +12,12 @@ inputBtn.addEventListener("click", function(){
     inputEl.value = "";
     renderLeads()
 });
+
+retrieveBtn.addEventListener("click", function(){
+    displayBookmarks();
+});
+
+
 
 function renderLeads(){
     let listItems = "";
@@ -28,3 +37,13 @@ for(let i = 0; i<myLeads.length;i++){
 ulEl.innerHTML += listItems;
 }
 
+function displayBookmarks(){
+    bookmarks = JSON.parse(localStorage.getItem("myLeads"));
+    if(bookmarks){
+        myLeads = bookmarks
+        renderLeads()
+    }else{
+        alert("No bookmarks to display")
+    }
+    
+}

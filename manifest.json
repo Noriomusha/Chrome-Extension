@@ -5,5 +5,9 @@
     "action": {
         "default_popup": "/public/views/index.html",
         "default_icon": "/public/images/bookmark.png"
-    }
+    },
+    "permissions": [
+        "tabs"
+    ]     
+    
 }
